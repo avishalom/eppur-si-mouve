@@ -26,13 +26,8 @@ import numpy as np
 
 from PIL import Image, ImageDraw 
 sys.path.insert(0,os.path.dirname(__file__))
-
 from modules import imagesH
-from modules.images2gif2 import writeGifFp
-
 import random
-
-
 from google.appengine.ext import db
 from google.appengine.api import users
 
