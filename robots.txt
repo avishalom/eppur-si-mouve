@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /direct_gif/
+Disallow: /get_code/
+Disallow: /gif/
+

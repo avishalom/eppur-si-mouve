@@ -1,0 +1,49 @@
+this is a small app to generate animated gifs from texts.
+obstructions and backgrounds may be added and animated as well 
+so these can be used as captchas.
+
+see eppur-si.appspot.com for a demo.
+
+this can be used as a secure (two-step) or non secure online image generation.
+(the url of the first step includes the word, see that for a demo.)
+
+it uses the 
+images2gif python module. (but not all of it . - thanks to the authors of that..)
+
+imagesH.py is uses that library and includes code for generating obfuscations for the animated captcha. 
+
+sample usage 
+
+in the main itself
+def main():
+    for aye in range(2):
+        v=VISCHA('Example 32',aye,{'dx'=4,'shape'=1})
+        with open('ffexample{}.gif'.format(aye),'w') as FP:
+            v.writeImage_fp(FP)           
+
+
+these are the possible parameters parameters.
+
+{  'font'       : 0,
+                'font_size'  : 36,
+                'screen_d'   : 14,
+                'screen_r'   : 16,
+                'wobble'     : 0,
+                'dx'         :0 ,
+                'dy'          :0,
+                'duration'    : 10,
+                'width'      : 300,
+                'height'     : 120,
+                'wordCount'  : 10,
+                'shape'      : 0,
+                'bgColor'    : 255,
+                'bgwColor'   : 100,
+                'screenColor': 155,
+                'fgColor'    : 100 },
+             
+
+muove.py contains the google app code that receives the requests as described in the appspot page , and dispatches the right calls.
+
+this is setup to work with google app engine.
+
+

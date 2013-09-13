@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="created" content="Tue, 04 Sep 2012 08:58:14 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>A dynamic moving text to image generator for animated Captcha and email obfuscation </title>
+    
+    <style type="text/css">
+    <!--
+	img{align:"middle";
+	}
+	tt{color:#A11;
+	background-color:#FFF}
+    body {
+      color:#000000;
+      background-color:#F5DEB3;
+	  font-family: '@Arial Unicode MS', Tahoma, 'Miriam Fixed', sans-serif; 
+	  font-weight: normal; 
+	  font-style: normal; 
+	  font-size:100%;
+	  
+	  text-decoration: none;
+	  
+    }
+	h1{
+	font-size:25px;
+	}
+	input{
+	
+	}
+	input:disabled{
+	color:#000;
+	}
+    a  { color:#0000FF; }
+    a:visited { color:#800080; }
+    a:hover { color:#008000; }
+    a:active { color:#FF0000; }
+    .hidden { display: none; }
+	.unhidden { display: block; }
+	-->
+    
+	</style>
+	
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<script type="text/javascript">
+ function unhide(divID) {
+ var item = document.getElementById(divID);
+ if (item) {
+ item.className=(item.className=='hidden')?'unhidden':'hidden';
+ }
+ }
+ </script>
+  </head>
+  <body onload="unhide('presets');unhide('conf');unhide('gallery');unhide('exl');unhide('exp');unhide('exg');">
+  
+  <div style="display:none;float:right;border-width:medium;border:1px solid;border-radius:10px;margin:3px;padding:2px;">
+<h1> How much?</h1>
+<ul><li>This service operates on voluntary payments</li>
+<li>Use for free, pay if you please</li>
+</ul> 
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="2K24DHMATUTE8">
+<table>
+<tr><td><input type="hidden" name="on0" value="select voluntary payment level">select voluntary payment level</td></tr><tr><td><select name="os0">
+	<option value="light usage, up to 10K views per year :">light usage, up to 10K views per year : $7.50 USD</option>
+	<option value="Medium site, up to 30K per year  :">Medium site, up to 30K per year  : $25.00 USD</option>
+	<option value="Heavy usage (300K per year)   :">Heavy usage (300K per year)   : $50.00 USD</option>
+	<option value="tip     :">tip     : $1.00 USD</option>
+	<option value="Awosome     :">Awosome     : $99.00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+</center>
+</div>
+
+
+
+
+
+  <h1>What?</h1>
+  <h3>A dynamic moving text to image generator <br>for animated Captcha and email obfuscation</h3>
+  <!--img src="/images/imagemove.gif" width="" height="" alt="word" title="motion makes it easy" border="0" />
+  <img src="/images/ex1.gif" width="" height="" alt="1" title="hard" border="0" /-->
+  <a href="http://imgur.com/8Lyar"><img src="http://i.imgur.com/8Lyar.gif" title="easy (Hosted by imgur.com)" alt="" /></a>
+  <a href="http://imgur.com/OBnxd"><img src="http://i.imgur.com/OBnxd.png" title="hard (Hosted by imgur.com)" alt="" /></a>
+  <br>
+  <!--img src="/images/scrIGGY5001.gif" width="300" height="120" alt="easy" border="0">
+  <img src="/images/scrindex.png" width="300" height="120" alt="can you see it" border="0"-->
+  <a href="http://imgur.com/b4qQF"><img src="http://i.imgur.com/b4qQF.gif" title="easy (Hosted by imgur.com)" alt="" /></a>
+
+  <a href="http://imgur.com/DZj48"><img src="http://i.imgur.com/DZj48.png" title="can you see (Hosted by imgur.com)" alt="" /></a>
+  <ul>
+<li>
+A moving captcha that is easier for humans and harder for computers, and looks nice too.  
+ </li>
+ <li>
+ Object Persistence ... pop out ... retinal computation... frog's eye ... brain.
+ </li>
+ <li>
+ <b>Patent Pending</b>
+</li>
+<br>
+<li> See the <a href="#Gallery1">Gallery</a> below for examples of the principles at work</li>
+</ul>
+<li> my email is in the image at the bottom of the page, i'd be happy to hear comments</li>
+</ul>
+<hr> 
+
+
+
+
+
+<h1>How?</h1>
+<ul>
+    <li>Option 1, not secure<ul>
+	<li>set your browser to
+	 <input size="70" value="<!--$HOST_REPL-->/direct_gif?word=not_secret" /><br>
+And see a moving picture of the word "not_secret":<br><center>
+<br>
+<a href="http://imgur.com/Oo47c"><img src="http://i.imgur.com/Oo47c.gif" title="Hosted by imgur.com" alt="" /></a>
+<!--img src="images/not_secret.gif" alt="like so"  /--> <br></center> 
+this  can be embedded as <input  size="70" value='&lt;img src="<!--$HOST_REPL-->/direct_gif?word=not_secret" />'/> 
+</pre> <br>not good for security because the secret is made plain in the url.
+</li></ul>
+<hr>
+<li>The secure method is to call (behind the scenes) <input size="80" value='<!--$HOST_REPL-->/get_code?c=1&word=SECRET'/>  </li>
+<ul><li>This returns the url of the image: <input size="50" value='<!--$HOST_REPL-->/gif/QFTC15001.gif'/>
+</li><li>  Then plant this in the form like so : <input  size="70" value='&lt;img src="<!--$HOST_REPL-->/gif/QFTC15001.gif" />' </li>
+<li>(and on submission, you can verify the SECRET, that was never exposed) </li>
+<!--br>This requires a key, but for non testing you can use "keySEPT12"-->
+<br><hr>example code : <ul><li>
+
+php : <textarea  cols="100">$secret='some_word';
+$url ='<!--$HOST_REPL-->/get_code?c=1&word=' . $secret;
+$img_addr = file_get_contents($url);
+ </textarea>
+</li><li>
+python : <textarea  cols="100">secret='someword'
+url ='<!--$HOST_REPL-->/get_code?c=1&word='+secret
+img_addr=urllib2.urlopen(url).read()
+</textarea>
+ 
+</li></ul></li></ul></ul>
+<hr>
+
+
+
+
+
+
+
+
+<h1>Whatever ? !</h1>
+<b>You do not really have to read below this line to get it to work;</b> 
+<hr>
+<a href="javascript:unhide('conf');javascript:unhide('exl')"><div id="exl"  class="hidden">
+[+] I do want to change configuration</div></a>
+
+
+
+
+<div id="conf"  class="unhidden">
+<a href="javascript:unhide('conf');javascript:unhide('exl')">
+[-] Baah, take it away!</a><br>
+
+
+but if you want to customize it, go ahead. The following are parameters that can be changed, just add them to the GET query string:
+<br> e.g.: 
+<input size="140" value ="<!--$HOST_REPL-->/direct_gif?word=Play5&screenColor=200&font_size=50&wordCount=3" />
+<br><br><center>
+  
+<a href="http://imgur.com/3Qw89"><img src="http://i.imgur.com/3Qw89.png" title="Hosted by imgur.com" alt="" /></a>
+<a href="http://imgur.com/u2m2Z"><img src="http://i.imgur.com/u2m2Z.gif" title="Hosted by imgur.com" alt="" /></a>
+ 
+</center>
+<table><!-- border="1"  width="100%" -->
+
+<ul> <tr><td><tt>c</tt></td><td> preset configuration. {0 or 1}, the following example values are for preset 0 <br>
+you can start out with a preset, and modift other values on top of that</td></tr>
+<br>
+<tr><td><tt>font</tt></td><td> {<b>0</b>,1}, cursive or block </td></tr>
+         <tr><td><tt>font_size</tt></td><td> in points <b>36</b></td></tr>
+             <tr><td><tt>screen_d</tt></td><td> size of holes <b>(14)</b></td></tr>
+<tr><td><tt>screen_r</tt></td><td> distance between holes  <b>(16)</b></td></tr>
+<tr><td><tt>width</tt></td><td> width of image <b>300</b></td></tr>
+    <tr><td><tt>height</tt></td><td> of image  <b>120</b></td></tr>
+        <tr><td><tt>wordCount</tt></td><td> how many background words <b>10</b></td></tr>
+        <tr><td><tt>duration</tt></td><td> how long to keep each image (10s of ms) {<b>10</b>,100...}</td></tr>
+        <tr><td><tt>wobble</tt></td><td> random tilting of  the screen {<b>0</b>,1,2...}</td></tr>
+        <tr><td><tt>dy</tt></td><td> moving the screen</td></tr>
+        <tr><td><tt>dx</tt></td><td> moving the screen</td></tr>
+            <tr><td><tt>shape</tt></td><td> shape of holes {0,<b>1</b>,2}  honeycomb,square,chess</td></tr>
+                <tr><td><tt>bgColor</tt></td><td> background color - greyscale {0-255} <b>(255)</b> </td></tr>
+<tr><td><tt>bgwColor</tt></td><td> background words - greyscale {0-255} <b>100</b></td></tr>
+    <tr><td><tt>screenColor</tt></td><td> foreground screen obstruction - greyscale {0-255} <b>155</b></td></tr>
+        <tr><td><tt>fgColor</tt></td><td> "secret" word  greyscale {0-255} <b>100</b></td></tr>
+
+</table>
+</div>
+<h1>Gallery</h1>
+<a href="javascript:unhide('gallery');javascript:unhide('exg')"><div id="exg"  class="hidden">
+[+] expand gallery</div></a>
+
+<div id="gallery"  class="unhidden">
+<a href="javascript:unhide('gallery');javascript:unhide('exg')">
+[-] shrink gallery</a>
+
+<hr /><a name="Gallery1" id="Gallery1"> </a>
+<ul> 
+<li>a single frame contains little information 
+<input value="<!--$HOST_REPL-->/direct_gif?screenColor=155&font_size=60&wordCount=0&dx=7&dy=5&word=CAT&screen_d=5" size=140/>
+<br>
+<a href="http://imgur.com/SQSHJ"><img src="http://i.imgur.com/SQSHJ.png" title="obstructing grated screen - Hosted by imgur.com" alt="" /></a>
+</li>
+<li>removing the screen shows how much is there
+<input value="<!--$HOST_REPL-->/direct_gif?screenColor=255&font_size=60&wordCount=0&dx=7&dy=5&word=CAT&screen_d=5" size=140/>
+<a href="http://imgur.com/SIh1E"><img src="http://i.imgur.com/SIh1E.png" title="just the signal (Hosted by imgur.com)" alt="" /></a>
+
+</li>
+<li>the motion reveals the word
+<input value="<!--$HOST_REPL-->/direct_gif?screenColor=155&font_size=60&wordCount=0&dx=7&dy=5&word=CAT&screen_d=5" size=140/>
+
+ 
+ <a href="http://imgur.com/NqJkL"><img src="http://i.imgur.com/NqJkL.gif" title="Hosted by imgur.com" alt="" /></a>
+ </li>
+
+<li>with noise, the image is hard to isolate 
+<input value="<!--$HOST_REPL-->/direct_gif?screenColor=155&word=CHESS&dx=4&dy=5&duration=4&font_size=60&wordCount=3&shape=2&screen_d=6&screen_r=20" size=160/>
+<a href="http://imgur.com/o35sR"><img src="http://i.imgur.com/o35sR.png" title="noise makes it very hard to notice signal - Hosted by imgur.com" alt="" /></a>
+</li>
+
+
+<li>another example <a href="http://imgur.com/ZBQud"><img src="http://i.imgur.com/ZBQud.png" title="Hosted by imgur.com" alt="" /></a>
+</li>
+<li>rapid motion solves the problem
+<a href="http://imgur.com/ejw26"><img src="http://i.imgur.com/ejw26.gif" title="motion brings it out(Hosted by imgur.com)" alt="" /></a></li>
+<li>motion allows us to construct an object that is never fully seen.
+ <input value="<!--$HOST_REPL-->/direct_gif?screenColor=0&word=CHESS&dx=7&dy=3&duration=100&font_size=30&wordCount=0&shape=2&screen_d=7&wobble=0"  size=160/> <br>
+<a href="http://imgur.com/ZK2in"><img src="http://i.imgur.com/ZK2in.gif" title="Hosted by imgur.com" alt="" /></a></li>
+<li>faster
+ <input value="<!--$HOST_REPL-->/direct_gif?screenColor=0&word=CHESS&dx=7&dy=3&duration=10&font_size=30&wordCount=0&shape=2&screen_d=7&wobble=0"  size=160/> <br>
+<a href="http://imgur.com/31M6J"><img src="http://i.imgur.com/31M6J.gif" title="Hosted by imgur.com" alt="" /></a></li>
+
+<li>wobbling doesn't make it harder for humans
+
+ <input value="<!--$HOST_REPL-->/direct_gif?screenColor=0&word=CHESS&dx=7&dy=3&duration=10&font_size=30&wordCount=0&shape=2&screen_d=7&wobble=7"  size=160/> <br>
+<a href="http://imgur.com/oBdXP"><img src="http://i.imgur.com/oBdXP.gif" title="Hosted by imgur.com" alt="" /></a></li>
+<ul>
+</div>
+
+<h1>Presets</h4>
+
+<a href="javascript:unhide('presets');javascript:unhide('exp')"><div id="exp"  class="hidden">
+[+] expand presets</div></a>
+
+
+
+<div id="presets"  class="unhidden">
+<a href="javascript:unhide('presets');javascript:unhide('exp')">
+[-] hide presets</a><br>
+
+
+
+
+
+I will add more as they become available, feel free to suggest 
+<ul> 
+<li> Preset 0 (C=0)
+<input value="<!--$HOST_REPL-->/direct_gif?c=0&word=preset_0" size=100/>
+<br>
+<br>
+<a href="http://imgur.com/xnfxv"><img src="http://i.imgur.com/xnfxv.gif" title=" obstructing grated screen (Hosted by imgur.com)" alt="" /></a>
+</li> 
+<br>
+<li>Preset 1 (C=1)
+
+<input value="<!--$HOST_REPL-->/direct_gif?c=1&word=preset_1" size=100/>
+<br>
+
+<br><a href="http://imgur.com/PbvVC"><img src="http://i.imgur.com/PbvVC.gif" title="obstructing grated screen(Hosted by imgur.com)" alt="" /></a></li>
+<br>
+
+<li>
+Preset 1 (C=1) modified
+<input value="<!--$HOST_REPL-->/direct_gif?c=1&word=preset_1HW&width=220&height=90" size=100/>
+<br>
+
+<br>
+<a href="http://imgur.com/sNOck"><img src="http://i.imgur.com/sNOck.gif" title="obstructing grated screen(Hosted by imgur.com)" alt="" /></a>
+</li>
+<br>
+
+<li>
+Preset 2 (C=2) modified
+<input value="<!--$HOST_REPL-->/direct_gif?word=preset_2&c=2" size=100/>
+<br>
+
+<br>
+<a href="http://imgur.com/75wgF"><img src="http://i.imgur.com/75wgF.gif" title="Hosted by imgur.com" alt="" /></a></li>
+
+</ul>
+</div>
+<a href="http://imgur.com/aKKuG"><img src="http://i.imgur.com/aKKuG.gif" title="Hosted by imgur.com" alt="" /></a>
+  </body>
+  
+</html>
