@@ -13,7 +13,7 @@ handlers:
 #-  url: /
  #  static_files: eppur.html
   #  upload: eppur.html
-- url: favicon.ico
+- url: /favicon.ico
   static_files: favicon.ico
   upload: favicon.ico
 - url: /.*
