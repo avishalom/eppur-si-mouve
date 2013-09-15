@@ -13,6 +13,9 @@ handlers:
 #-  url: /
  #  static_files: eppur.html
   #  upload: eppur.html
+- url: /
+  static_files: favicon.ico
+  upload: favicon.ico
 - url: /.*
   script: muove.app
 #  login: admin
