@@ -61,8 +61,11 @@ class VISCHA:
         self.background = self._this_many_words(self.CONF.wordCount, (self.CONF.width, self.CONF.height))
         self.foreground = self._get_net()
         self.bgSH = [0, -1, 0]
-        self.wSH = [self.CONF.width//2 - self.word.size[0]//2,
-                    self.CONF.height//2 - self.word.size[1], 0]
+        # clamp initial word position so it starts fully inside the canvas
+        wx = max(0, self.CONF.width//2 - self.word.size[0]//2)
+        wy = max(0, min(self.CONF.height//2 - self.word.size[1],
+                        self.CONF.height - self.word.size[1]))
+        self.wSH = [wx, wy, 0]
         self.foreSH = [self.CONF.dx, self.CONF.dy, 0]
         self.angle = 0
 

@@ -60,7 +60,7 @@ default_configurations = [
     # 3 — white noise textures; each layer's noise moves rigidly with that layer
     #     wobble must stay 0 so noise and mask layers get the same shift each frame
     {   'font'       : 2,    # Arial Black — bold, thick strokes
-        'font_size'  : 72,
+        'font_size'  : 60,
         'screen_d'   : 12,
         'screen_r'   : 20,
         'wobble'     : 0,
