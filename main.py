@@ -21,8 +21,10 @@ from modules import imagesH
 
 app = Flask(__name__)
 
-# Set CAPTCHA_SECRET in app.yaml env_variables or your shell for production.
-SECRET = os.environ.get('CAPTCHA_SECRET', 'eppur-si-mouve-default').encode()
+_raw_secret = os.environ.get('CAPTCHA_SECRET', '')
+if not _raw_secret:
+    raise RuntimeError("CAPTCHA_SECRET environment variable must be set before starting.")
+SECRET = _raw_secret.encode()
 
 
 def _make_token(params):
@@ -49,7 +51,7 @@ def _verify_token(token):
 
 def _gif_response(params):
     word = params.get('word', 'default')
-    conf = int(params.get('c', 1))
+    conf = max(0, min(int(params.get('c', 1)), len(imagesH.CONF.preconf) - 1))
     v = imagesH.VISCHA(word, conf, params)
     buf = io.BytesIO()
     v.writeImage_fp(buf)
