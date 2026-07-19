@@ -1,30 +1,12 @@
-application: eppur-si
-version: 1
-runtime: python27
-api_version: 1
-threadsafe: false
-
+runtime: python312
 
 handlers:
 - url: /images
   static_dir: images
 - url: /stylesheets
   static_dir: stylesheets
-#-  url: /
- #  static_files: eppur.html
-  #  upload: eppur.html
 - url: /favicon.ico
   static_files: favicon.ico
   upload: favicon.ico
 - url: /.*
-  script: muove.app
-#  login: admin
-
-libraries:
-- name: jinja2
-  version: latest
-- name: PIL
-  version: latest
-- name: numpy
-  version: latest
-
+  script: auto

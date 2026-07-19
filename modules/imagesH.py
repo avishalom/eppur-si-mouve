@@ -13,8 +13,7 @@ from PIL import Image ,ImageDraw , ImageFont
 import math
 import numpy as np
 from random import randint
-import images2gif_extension #import writeGifFp
-from default_conf import default_configurations
+from modules.default_conf import default_configurations
 import os
 
 fonts1 = ['BRADHITC.TTF','arial.ttf']
@@ -64,29 +63,25 @@ class VISCHA:
         
         self.foreground = self._get_net()
         self.bgSH=[0, -1, 0]
-        self.wSH=[self.CONF.width/2-self.word.size[0]/2,
-                  self.CONF.height/2-self.word.size[1],0]
+        self.wSH=[self.CONF.width//2-self.word.size[0]//2,
+                  self.CONF.height//2-self.word.size[1],0]
         self.foreSH=[self.CONF.dx,self.CONF.dy,0]
         self.angle=0
 
 
-    def _rand_image_word(self,rword=None):
-        '''
-        creates an image with a random word''' 
-	#return fonts[self.CONF.font]
-	
-        font1 = ImageFont.FreeTypeFont(fonts[self.CONF.font],self.CONF.font_size+randint(0,20))
-	#return None
-        ang=0.1
-        if rword==None:
-            ang=1
-            rword = get_random_letters_image(randint(3,9))
-        size = font1.getsize(rword)
-        im= PIL.Image.new('L',size)
-        dr= ImageDraw.Draw(im)
-#	return None
-        dr.text((0,0),rword,font=font1,fill='white')
-        return im.rotate(ang*3*randint(-10,10),expand=True)
+    def _rand_image_word(self, rword=None):
+        '''creates an image with a random word'''
+        font1 = ImageFont.FreeTypeFont(fonts[self.CONF.font], self.CONF.font_size + randint(0, 20))
+        ang = 0.1
+        if rword is None:
+            ang = 1
+            rword = get_random_letters_image(randint(3, 9))
+        bbox = font1.getbbox(rword)
+        w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        im = PIL.Image.new('L', (w, h))
+        dr = ImageDraw.Draw(im)
+        dr.text((-bbox[0], -bbox[1]), rword, font=font1, fill='white')
+        return im.rotate(ang * 3 * randint(-10, 10), expand=True)
 
     def _this_many_words(self,n,sizes):
         '''
@@ -126,9 +121,9 @@ class VISCHA:
         for aye in range(t):
             for jay in range(t):
                 shapes['func']((aye*r*shapes['wshrink'],
-                            jay*r-r/2*(aye%2)*shapes['shift'],
+                            jay*r-r//2*(aye%2)*shapes['shift'],
                             aye*r*shapes['wshrink']+c,
-                            jay*r+c-r/2*(aye%2)*shapes['shift']),fill='white')
+                            jay*r+c-r//2*(aye%2)*shapes['shift']),fill='white')
         return im
     
     def _nextImage(self,move=True):
@@ -155,13 +150,20 @@ class VISCHA:
             self.bgSH[1]=1 if math.cos(self.angle) > 0 else -1
         return im2
 	
-    def writeImage_fp(self,Fp):
+    def writeImage_fp(self, Fp):
         '''
         write the animated gif to file pointer.
-        it is callers responsibility to open and close the pointre
+        caller is responsible for opening and closing the pointer.
         '''
-        images2gif_extension.writeGifFp(Fp,
-                 [np.array(self._nextImage()) for dummy in range(36) ],duration=(self.CONF.duration/100.0))    
+        frames = [self._nextImage() for _ in range(36)]
+        frames[0].save(
+            Fp,
+            format='GIF',
+            save_all=True,
+            append_images=frames[1:],
+            duration=int(self.CONF.duration * 10),  # hundredths of sec → ms
+            loop=0,
+        )
 
 
 
@@ -180,7 +182,7 @@ def rollshift(img,xyt,keep=False,wobble=0):
     szx,szy=img.size
     im2=scroll(roll(img,xyt[0]),xyt[1]).rotate(xyt[2]+randint(-1,1)*wobble,expand=True)
     s2x,s2y=im2.size
-    box=(s2x-szx)/2,(s2y-szy)/2,(s2x+szx)/2,(s2y+szy)/2
+    box=(s2x-szx)//2,(s2y-szy)//2,(s2x+szx)//2,(s2y+szy)//2
     return im2.crop(box)
     
 
@@ -227,4 +229,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    a = raw_input()
+    a = input()
