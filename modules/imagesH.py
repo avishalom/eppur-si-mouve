@@ -16,13 +16,15 @@ from random import randint
 from modules.default_conf import default_configurations
 import os
 
-fonts1 = ['BRADHITC.TTF','arial.ttf']
-# kept in a local directory. I had some issues with the case of the filenames in google appengine.
-# didn't take mixed caps  all small or all capital ok.
+fonts1 = ['BRADHITC.TTF', 'arial.ttf']       # in modules/
+fonts2 = ['fonts/ariblk.ttf']               # Arial Black, in project root/fonts/
 try:
-    fonts = [os.path.join(os.path.dirname(__file__), ff) for ff in fonts1]
+    _mod = os.path.dirname(__file__)
+    _root = os.path.dirname(_mod)
+    fonts = ([os.path.join(_mod, ff) for ff in fonts1] +
+             [os.path.join(_root, ff) for ff in fonts2])
 except:
-    fonts = [os.path.join(os.path.abspath('.'), ff) for ff in fonts1]
+    fonts = [os.path.join(os.path.abspath('.'), ff) for ff in fonts1 + fonts2]
 
 
 class CONF:
